@@ -1,0 +1,4 @@
+*.post
+log*
+output*
+slurm*
