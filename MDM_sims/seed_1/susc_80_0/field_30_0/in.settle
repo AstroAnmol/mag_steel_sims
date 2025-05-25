@@ -263,6 +263,6 @@ velocity        all set 0. 0. 0.
 write_restart   restart_steel_mag_settle.static
 
 next            ii
-jump            in.steel_settle_mag loop
+jump            SELF loop
 
 # --- End of Script ---
