@@ -1,5 +1,5 @@
 #!/bin/csh
-#SBATCH --job-name=settle_seed_1_susc_03_6_field_02_5
+#SBATCH --job-name=settle_seed_1_susc_80_0_field_30_0
 #SBATCH --nodes=1
 #SBATCH --ntasks=30
 #SBATCH --oversubscribe
@@ -12,7 +12,7 @@
 #############################################################
 
 
-set dir=/scratch/zt1/project/hartzell-lab/user/sikka/SIMS-LIGGGHTS/avalanching_experiments/mag_steel_sims/MDM_sims/seed_1/susc_03_6/field_02_5
+set dir=/scratch/zt1/project/hartzell-lab/user/sikka/SIMS-LIGGGHTS/avalanching_experiments/mag_steel_sims/MDM_sims/seed_1/susc_80_0/field_30_0
 set codeexe=/scratch/zt1/project/hartzell-lab/user/sikka/SIMS-LIGGGHTS/avalanching_experiments/lmp_auto
 
 cd $dir

@@ -9,7 +9,7 @@ atom_modify     sort 10000 0
 # boundaries
 boundary        f f f
 
-#LIGGGHTS-Public should produce the same answers for any newton flag setting, besides round off
+#LIGGGHTS-Public shouuld produce the same answers for any newton flag setting, besides round off
 newton          off
 hard_particles  yes
 communicate     single vel yes
@@ -19,7 +19,7 @@ processors      5 3 2
 
 # load the prepared granular assembly
 # change the last field to point to the desired assembly
-read_restart    ../../restart_steel_tapped_05_extra_removed.static
+read_restart    ./restart_steel_mag_settle.static
 
 
 ### VARIABLES DEFINITION
@@ -130,13 +130,13 @@ variable        cohesion_energy_32 equal ${cohesion_energy_23}
 variable        cohesion_energy_33 equal ${cohesion_energy} # Wall-Wall (doesn't interact)
 
 # Magnetic Susceptibility
-variable        magnetic_susc_steel equal 3.6
+variable        magnetic_susc_steel equal 80.0
 variable        magnetic_susc_brass equal 0
 variable        magnetic_susc_wall equal 0
 
 # Force properties
 variable        grav_value equal 9.8 #m/s^2
-variable        mag_B_F equal 0.0025 # T (B field)
+variable        mag_B_F equal 0.0300 # T (B field)
 variable        mag_H_F equal ${mag_B_F}*795774.71545947673925 # A/m (H field)
 
 # Time steps
@@ -149,7 +149,7 @@ variable        magtime equal 1e-3
 variable        magstep equal ${magtime}/${dt} # calculate new magnetic forces every magstep steps
 variable        neighstep equal 1e-2/${dt} # create a new neigh list 
 
-variable        25milli_second_steps equal 25e-3/${dt} # number of steps for 25 milli second
+variable        milli_second_steps equal 1e-3/${dt} # number of steps for a ten milli second
 variable        deci_second_steps equal 0.1/${dt} # number of steps for 0.1 seconds time
 variable        half_second_steps equal 0.5/${dt} # number of steps for 0.5 seconds time
 variable        one_second_steps equal 1/${dt} # number of steps for 1 second time
@@ -250,19 +250,100 @@ fix             mag all magnetic    0 0 ${mag_H_F} ${magstep} mdm convergence
 fix             ctm all check/timestep/mag ${magstep} 0.001
 
 
-# RUN FOR 0.5 SEC while removing energy every 25 ms
+# pull the stopper
+unfix           wall_center
 
-variable        N_loop_steps equal ${half_second_steps}/${25milli_second_steps}
+# RUN FOR 0.5 SECONDS
 
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+# RUN FOR 0.5 SECONDS
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+# RUN FOR 0.5 SECONDS
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+run             ${deci_second_steps}
+
+write_restart   restart_steel_mag_drop.static
+
+# --- Running extra to check for KE ---
+
+compute         ke all ke  update_on_run_end yes 
+
+variable        target_ke equal 5E-06
+variable        N_loop_steps equal ${half_second_steps}/${thermostep}
+
+# Loop until kinetic energy is below the target
 label           loop
 variable        ii loop ${N_loop_steps}
+run             ${thermostep}
 
-print           "loop number: ${ii}"
-run             ${25milli_second_steps}
-velocity        all set 0. 0. 0.
-write_restart   restart_steel_mag_settle.static
+variable        current_ke equal c_ke
+
+# Check if current kinetic energy is less than the target
+if "${current_ke} < ${target_ke}" then &
+"print 'Simulation finished: Kinetic energy reached target value: ${current_ke}'" &
+"jump SELF break"
 
 next            ii
-jump            in.steel_settle_mag loop
+jump            SELF loop
+
+label           break
+print           "Simulation finished after ${ii} iterations."
+write_restart   restart_steel_mag_drop.static
+
 
 # --- End of Script ---
