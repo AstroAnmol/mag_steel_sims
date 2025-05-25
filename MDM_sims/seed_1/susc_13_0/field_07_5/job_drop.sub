@@ -1,0 +1,24 @@
+#!/bin/csh
+#SBATCH --job-name=drop_seed_1_susc_13_0_field_07_5
+#SBATCH --nodes=1
+#SBATCH --ntasks=30
+#SBATCH --oversubscribe
+#SBATCH --time 16:00:00
+#SBATCH --mail-user sikka@umd.edu
+#SBATCH --mail-type=ALL
+
+#############################################################
+# change the below input variable to your own filename
+#############################################################
+
+
+set dir=/scratch/zt1/project/hartzell-lab/user/sikka/SIMS-LIGGGHTS/avalanching_experiments/mag_steel_sims/MDM_sims/seed_1/susc_13_0/field_07_5
+set codeexe=/scratch/zt1/project/hartzell-lab/user/sikka/SIMS-LIGGGHTS/avalanching_experiments/lmp_auto
+
+cd $dir
+# rm -r -f output_drop.txt
+# rm -r -f results_steel_mag
+module load openmpi
+module load eigen
+module load boost
+mpirun -np 30 $codeexe -echo both -i ./in.drop > ./output_drop.txt
