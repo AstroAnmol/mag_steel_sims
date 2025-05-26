@@ -19,8 +19,8 @@ processors      5 3 2
 
 # load the prepared granular assembly
 # change the last field to point to the desired assembly
-read_restart    ../../restart_steel_tapped_05_extra_removed.static
-
+# read_restart    ../../restart_steel_tapped_05_extra_removed.static
+read_restart    ./restart_steel_mag_settle.static
 
 ### VARIABLES DEFINITION
 
