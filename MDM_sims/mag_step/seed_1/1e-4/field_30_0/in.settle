@@ -254,7 +254,7 @@ fix             ctm all check/timestep/mag ${magstep} 0.001
 # RUN FOR 0.5 SEC while removing energy every 25 ms
 
 # variable        N_loop_steps equal ${half_second_steps}/${25milli_second_steps}
-variable        N_loop_steps 1
+variable        N_loop_steps equal 1
 
 label           loop
 variable        ii loop ${N_loop_steps}
