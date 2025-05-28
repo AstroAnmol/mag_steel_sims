@@ -19,7 +19,8 @@ processors      5 3 2
 
 # load the prepared granular assembly
 # change the last field to point to the desired assembly
-read_restart    ./restart_steel_mag_settle.static
+# read_restart    ./restart_steel_mag_settle.static
+read_restart    ./restart_steel_mag_drop.static
 
 
 ### VARIABLES DEFINITION
@@ -253,49 +254,49 @@ fix             ctm all check/timestep/mag ${magstep} 0.001
 # pull the stopper
 unfix           wall_center
 
-# RUN FOR 0.5 SECONDS
+# # RUN FOR 0.5 SECONDS
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-# RUN FOR 0.5 SECONDS
+# # RUN FOR 0.5 SECONDS
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
 # RUN FOR 0.5 SECONDS
 
