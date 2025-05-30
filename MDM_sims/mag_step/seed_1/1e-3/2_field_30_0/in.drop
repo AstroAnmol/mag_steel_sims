@@ -239,7 +239,8 @@ dump            dmp all custom ${dumpstep} results_steel_mag/dump*.post id type 
 
 
 # ensure particles are static 
-# velocity       all set 0. 0. 0.
+velocity       all set 0. 0. 0.
+velocity       pts_floor set 0. 0. 0. 
 
 ## freeze
 fix             floor_freeze pts_floor freeze
