@@ -149,6 +149,7 @@ variable        magtime equal 1e-3
 variable        magstep equal ${magtime}/${dt} # calculate new magnetic forces every magstep steps
 variable        neighstep equal 1e-2/${dt} # create a new neigh list 
 
+variable        1_5_second_steps equal 1.5/${dt} # number of steps for a ten milli second
 variable        milli_second_steps equal 1e-3/${dt} # number of steps for a ten milli second
 variable        deci_second_steps equal 0.1/${dt} # number of steps for 0.1 seconds time
 variable        half_second_steps equal 0.5/${dt} # number of steps for 0.5 seconds time
@@ -256,69 +257,69 @@ unfix           wall_center
 
 # RUN FOR 0.5 SECONDS
 
-run             ${deci_second_steps}
+run             ${1_5_secondsteps} #${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-# RUN FOR 0.5 SECONDS
+# # RUN FOR 0.5 SECONDS
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-# RUN FOR 0.5 SECONDS
+# # RUN FOR 0.5 SECONDS
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
-run             ${deci_second_steps}
+# run             ${deci_second_steps}
 
-write_restart   restart_steel_mag_drop.static
+# # write_restart   restart_steel_mag_drop.static
 
 # --- Running extra to check for KE ---
 
@@ -344,7 +345,7 @@ jump            SELF loop
 
 label           break
 print           "Simulation finished after ${ii} iterations."
-write_restart   restart_steel_mag_drop.static
+# write_restart   restart_steel_mag_drop.static
 
 
 # --- End of Script ---
