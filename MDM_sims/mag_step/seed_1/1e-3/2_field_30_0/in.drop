@@ -257,7 +257,7 @@ unfix           wall_center
 
 # RUN FOR 0.5 SECONDS
 
-run             ${1_5_secondsteps} #${deci_second_steps}
+run             ${1_5_second_steps} #${deci_second_steps}
 
 # write_restart   restart_steel_mag_drop.static
 
