@@ -278,11 +278,12 @@ unfix           wall_center
 
 # RUN FOR 0.5 SECONDS
 
-run             ${1_5_second_steps} #${deci_second_steps}
+run             ${1_5_second_steps} pre no every ${deci_second_steps} &
+                "write_restart   restart_steel_mag_drop.static"
+# run             ${deci_second_steps}
 
 # write_restart   restart_steel_mag_drop.static
 
-# run             ${deci_second_steps}
 
 # write_restart   restart_steel_mag_drop.static
 
@@ -352,7 +353,7 @@ variable        N_loop_steps equal ${half_second_steps}/${thermostep}
 # Loop until kinetic energy is below the target
 label           loop
 variable        ii loop ${N_loop_steps}
-run             ${thermostep}
+run             ${thermostep} pre no
 
 variable        current_ke equal c_ke
 
