@@ -252,34 +252,34 @@ run             0
 # fix             ctm all check/timestep/mag ${magstep} 0.001
 
 
-# # RUN FOR 0.5 SECONDS
-# run             ${deci_second_steps}
+# RUN FOR 0.5 SECONDS
+run             ${deci_second_steps} pre no
 
-# write_restart   restart_steel_mag_drop.static
+write_restart   restart_steel_mag_drop.static
 
-# run             ${deci_second_steps}
+run             ${deci_second_steps} pre no
 
-# write_restart   restart_steel_mag_drop.static
+write_restart   restart_steel_mag_drop.static
 
-# run             ${deci_second_steps}
+run             ${deci_second_steps} pre no
 
-# write_restart   restart_steel_mag_drop.static
+write_restart   restart_steel_mag_drop.static
 
-# run             ${deci_second_steps}
+run             ${deci_second_steps} pre no
 
-# write_restart   restart_steel_mag_drop.static
+write_restart   restart_steel_mag_drop.static
 
-# run             ${deci_second_steps}
+run             ${deci_second_steps} pre no
 
-# write_restart   restart_steel_mag_drop.static
+write_restart   restart_steel_mag_drop.static
 
 # pull the stopper
 unfix           wall_center
 
 # RUN FOR 0.5 SECONDS
 
-run             ${1_5_second_steps} pre no every ${deci_second_steps} &
-                "write_restart   restart_steel_mag_drop.static"
+# run             ${1_5_second_steps} pre no every ${deci_second_steps} &
+#                 "write_restart   restart_steel_mag_drop.static"
 # run             ${deci_second_steps}
 
 # write_restart   restart_steel_mag_drop.static
