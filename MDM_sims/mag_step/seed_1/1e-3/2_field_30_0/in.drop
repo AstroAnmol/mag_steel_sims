@@ -331,7 +331,7 @@ variable        N_loop_steps equal ${half_second_steps}/${thermostep}
 # Loop until kinetic energy is below the target
 label           loop
 variable        ii loop ${N_loop_steps}
-run             ${thermostep}
+run             ${thermostep} pre no
 
 variable        current_ke equal c_ke
 
